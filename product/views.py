@@ -76,8 +76,8 @@ class SearchProducts(viewsets.GenericViewSet, mixins.ListModelMixin):
         if request.GET.get('search'):
             query = request.GET.get('search')
             product_ins = Product.objects.filter(
-                Q(name__contains=request.GET.get('search')) | Q(_class__contains=request.GET.get('search')) | Q(
-                    status__contains=request.GET.get('search')))
+                Q(name__contains=request.GET.get('search')) | Q(_class=request.GET.get('search')) | Q(
+                    status=request.GET.get('search')))
             serializer = ProductSerializer(product_ins, many=True)
             return Response(data={"data": serializer.data}, status=status.HTTP_200_OK)
         return Response(data={"data": ProductSerializer(self.queryset, many=True).data}, status=status.HTTP_200_OK)
