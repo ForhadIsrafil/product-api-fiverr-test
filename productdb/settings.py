@@ -75,25 +75,25 @@ WSGI_APPLICATION = 'productdb.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': config('DATABASE_ENGINE', cast=str),
-#         'NAME': config('DATABASE_NAME', cast=str),
-#         'USER': config('DATABASE_USER', cast=str),
-#         'PASSWORD': config('DATABASE_PASSWORD', cast=str),
-#         'HOST': config('DATABASE_HOST', cast=str),
-#         'PORT': config('DATABASE_PORT', cast=str),
-#         'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'", 'charset': 'utf8mb4'},
-#     }
-# }
-
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': config('DATABASE_ENGINE', cast=str),
+        'NAME': config('DATABASE_NAME', cast=str),
+        'USER': config('DATABASE_USER', cast=str),
+        'PASSWORD': config('DATABASE_PASSWORD', cast=str),
+        'HOST': config('DATABASE_HOST', cast=str),
+        'PORT': config('DATABASE_PORT', cast=str),
+        'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'", 'charset': 'utf8mb4'},
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
