@@ -37,8 +37,12 @@ class ProductView(viewsets.GenericViewSet):
     def update(self, request, id, format=None):
         product_ins = get_object(Product, id)
         if product_ins is not None:
+            product_ins.variant.clear()
+            product_ins.variant.add(*request.data['variant'])
+            product_ins.save()
+
             serializer = ProductSerializer(product_ins, data=request.data, partial=True, context={'request': request})
-            if serializer.is_valid():
+            if serializer.is_valid(raise_exception=True):
                 serializer.save()
                 return Response(data={"success": True}, status=status.HTTP_202_ACCEPTED)
             else:
