@@ -17,7 +17,6 @@ class CreateProductView(viewsets.GenericViewSet):
 
     # todo: createing new products
     def create(self, request, format=None):
-        print(request.data)
         serializer = CreateProductSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()

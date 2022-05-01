@@ -19,13 +19,6 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', '_class', 'price', 'image', 'status', 'variant',)
         # extra_kwargs = {'variant': {'write_only': True}}
 
-    # def update(self, instance, validated_data):
-    #     instance.variant.clear()
-    #     instance.variant.add(*self.context['request'].data['variant']
-    #                          )
-    #     instance.save()
-    #     return instance
-
     def validate(self, attrs):
         data = super(ProductSerializer, self).validate(attrs)
         return data
@@ -36,6 +29,6 @@ class CreateProductSerializer(serializers.ModelSerializer):
         model = Product
         fields = ('id', 'name', '_class', 'price', 'image', 'status', 'variant',)
 
-    def validate(self, attrs):
-        data = super(CreateProductSerializer, self).validate(attrs)
-        return data
+    # def validate(self, attrs):
+    #     data = super(CreateProductSerializer, self).validate(attrs)
+    #     return data
